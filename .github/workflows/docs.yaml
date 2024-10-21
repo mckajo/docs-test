@@ -6,9 +6,6 @@ on:
         type: string
         required: true
         description: 'specify docs version to be created'
-  push:
-    branches:
-      - candidate/dev/feature/docs
 permissions:
   contents: write
 jobs:
