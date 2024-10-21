@@ -23,6 +23,7 @@ jobs:
         working-directory: ./docs/website
         run: yarn install --non-interactive
       - name: create version
+        if: ${{ inputs.version }}
         working-directory: ./docs/website
         run: yarn version ${{ inputs.version }}
       - name: build docs
