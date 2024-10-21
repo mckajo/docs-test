@@ -1,5 +1,6 @@
 name: build and deploy docs
 on:
+  workflow_dispatch: {}
   push:
     branches:
       - candidate/dev/feature/docs
