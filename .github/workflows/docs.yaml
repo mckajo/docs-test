@@ -1,0 +1,21 @@
+name: build and deploy docs
+on:
+  push:
+    branches:
+      - candidate/dev/feature/docs
+permissions:
+  contents: write
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout dev
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+      - name: install deps
+        working-directory: ./docs/website
+        run: yarn install --non-interactive
+      - name: build docs
+        working-directory: ./docs/website
+        run: yarn run build
