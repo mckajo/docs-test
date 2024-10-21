@@ -1,6 +1,11 @@
 name: build and deploy docs
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: 'specify docs version to be created'
   push:
     branches:
       - candidate/dev/feature/docs
@@ -17,6 +22,9 @@ jobs:
       - name: install deps
         working-directory: ./docs/website
         run: yarn install --non-interactive
+      - name: create version
+        working-directory: ./docs/website
+        run: yarn version ${{ inputs.version }}
       - name: build docs
         working-directory: ./docs/website
         run: yarn run build
@@ -25,4 +33,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/website/build/menshen
-
