@@ -20,3 +20,9 @@ jobs:
       - name: build docs
         working-directory: ./docs/website
         run: yarn run build
+      - name: publish to pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/website/build/menshen
+
