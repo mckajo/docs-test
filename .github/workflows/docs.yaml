@@ -22,7 +22,7 @@ jobs:
       - name: create version
         if: ${{ inputs.version }}
         working-directory: ./docs/website
-        run: yarn version ${{ inputs.version }}
+        run: yarn run version ${{ inputs.version }}
       - name: build docs
         working-directory: ./docs/website
         run: yarn run build
